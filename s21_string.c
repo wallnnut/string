@@ -2,12 +2,12 @@
 #include <string.h>
 
 int main () {
-	char arr[15] = "1234567895";
-	char arr1[15] = "1234567890";
+	char arr[15] = "1234567890";
+	char arr1[15];
 
 	int symb;
-	symb = s21_memcmp(arr, arr1, 10);
-	printf("%d", symb);
+	s21_memcpy(arr1, arr, 5);
+	printf("%s", arr1);
 }
 
 void *s21_memchr(const void *str, int c, size_t n) {
@@ -39,4 +39,15 @@ int s21_memcmp(const void *str1, const void *str2, size_t n) {
 	}
 	return result;
 }
+
+void *s21_memcpy(void *dest, const void *src, size_t n) {
+	char *temp1 = dest;
+	const char *temp2 = src;
+	for (size_t i = n; i != 0; i--)
+	{
+			*temp1 = *temp2;
+			*temp1++;
+			*temp2++;
+	}
 	
+}
