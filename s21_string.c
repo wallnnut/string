@@ -3,11 +3,10 @@
 
 int main () {
 	char arr[15] = "1234567890";
-	char arr1[15];
 
 	int symb;
-	s21_memcpy(arr1, arr, 5);
-	printf("%s", arr1);
+	s21_memset(arr, '1', 10);
+	printf("%s", arr);
 }
 
 void *s21_memchr(const void *str, int c, size_t n) {
@@ -48,6 +47,14 @@ void *s21_memcpy(void *dest, const void *src, size_t n) {
 			*temp1 = *temp2;
 			*temp1++;
 			*temp2++;
+	}
+}
+
+void *s21_memset(void *str, int c, size_t n) {
+	char *temp = str;
+	for (size_t i = 0; i < n; i++)
+	{
+		*temp++ = c;
 	}
 	
 }
