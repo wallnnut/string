@@ -1,0 +1,1 @@
+gcc check_s21_string.c ../s21_string.c -o test -lcheck -lrt -lm -lsubunit

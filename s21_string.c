@@ -1,13 +1,7 @@
 #include "s21_string.h"
 #include <string.h>
+#include <check.h>
 
-int main () {
-	char arr[15] = "1234567890";
-
-	int symb;
-	s21_memset(arr, '1', 10);
-	printf("%s", arr);
-}
 
 void *s21_memchr(const void *str, int c, size_t n) {
 	const unsigned char *ch = str;
@@ -56,5 +50,29 @@ void *s21_memset(void *str, int c, size_t n) {
 	{
 		*temp++ = c;
 	}
-	
 }
+
+char *s21_strncat(char *dest, const char *src, size_t n) {
+char *temp = dest;
+	while(*dest){
+		*dest++;
+	}
+	for (size_t i = 0; i < n && src[i] != 0; i++)
+	{
+		dest[i] = src[i];
+	}
+	return temp;
+}
+
+char *s21_strchr(const char *str, int c) {
+	const unsigned char* temp = str;
+	while(*temp) {
+		if ((char)c == *temp) {
+			return (char*)temp;
+		}
+		temp++;
+	}
+	return NULL;
+}
+
+
