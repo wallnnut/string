@@ -4,7 +4,7 @@
 			"name": "(gdb) Launch",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/tests/test",
+			"program": "${workspaceFolder}/a.out",
 			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
