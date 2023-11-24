@@ -13,7 +13,9 @@ int main() {
 	char arr[100];
 	float x = 0.015;
 	// s21_sprintf(arr,"sd: %s%d%f", "qwerty", 10, 233.007);
-	sprintf(arr,"sd: %s\n%d\t%f\t%u", "qwerty", 10, 233.007, 10);
+	s21_sprintf(arr,"negative variable: %d\t%f", 10, 233.007);
+	sprintf(arr,"negative variable: %d\t%f", 10, 233.007);
+
 
 	printf("%s", arr);
 
@@ -119,12 +121,12 @@ void get_specifiers(Specifiers_t *specifiers, const char* restrict format, va_li
 			*format++;
 			continue;
 		}
-		else if (prev == SPECIAL_SYMBOL && *format == 'c') {
-			result_string[i] = va_arg(argptr, int);
-			i++;
-		} else if (prev == SPECIAL_SYMBOL && *format == 's') {
-			strcat(result_string, va_arg(argptr, char*));
-		} 
+		// else if (prev == SPECIAL_SYMBOL && *format == 'c') {
+		// 	result_string[i] = va_arg(argptr, int);
+		// 	i++;
+		// } else if (prev == SPECIAL_SYMBOL && *format == 's') {
+		// 	strcat(result_string, va_arg(argptr, char*));
+		// } 
 		else if (prev == SPECIAL_SYMBOL && *format == 'd') {
 			int num = va_arg(argptr, int);
 			char temp[32] = {0};
@@ -145,7 +147,7 @@ void get_specifiers(Specifiers_t *specifiers, const char* restrict format, va_li
 		prev = *format;
 		*format++;
 	}
-	printf("%s", result_string);
+	printf("%s\n", result_string);
 	free(result_string);
 }
 

@@ -4,21 +4,25 @@
 
 
 
-int int_to_str(int x, char str[], int d) 
+int int_to_str(int q, char str[], int d) 
 { 
+    int x = q;
+    if (q < 0) {
+        x *= -1;
+    }
     int i = 0; 
     while (x) { 
         str[i++] = (x % 10) + '0'; 
         x = x / 10; 
     } 
  
-    // If number of digits required is more, then 
-    // add 0s at the beginning 
     while (i < d) 
         str[i++] = '0'; 
- 
-    revstr(str, i); 
-    // str[i] = '\0'; 
+    if (q < 0) {
+        str[i] = '-';
+        i++;
+    }
+    revstr(str, i);
     return i; 
 } 
 
@@ -34,27 +38,25 @@ void revstr(char *str, int len)
     } 
 }  
 
-void ftoa(double n, char* res, int afterpoint) 
-{ 
-    // Extract integer part 
-    int ipart = (int)n; 
- 
-    // Extract floating part 
-    double fpart = n - (double)ipart; 
- 
-    // convert integer part to string 
+void ftoa(double q, char* res, int afterpoint) 
+{
+    double n = q;
+   
+    int ipart = (int)n;
+    
+    double fpart = n - (double)ipart;
+    if (q < 0) {
+        fpart *= -1;
+    }
     int i = int_to_str(ipart, res, 0); 
- 
-    // check for display option after point 
+    
     if (afterpoint != 0) { 
-        res[i] = '.'; // add dot 
+        res[i] = '.'; 
  
-        // Get the value of fraction part upto given no. 
-        // of points after dot. The third parameter 
-        // is needed to handle cases like 233.007 
         fpart = fpart * pow(10, afterpoint); 
         fpart = round(fpart);
  
         int_to_str((int)fpart, res + i + 1, afterpoint); 
+        
     } 
 } 
